@@ -789,3 +789,6 @@
 /Users/kieran/CSharpProjects/Projects/MyMauiApp1/bin/Debug/net8.0-maccatalyst/maccatalyst-arm64/Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
 /Users/kieran/CSharpProjects/Projects/MyMauiApp1/bin/Debug/net8.0-maccatalyst/maccatalyst-arm64/Microsoft.VisualStudio.DesignTools.TapContract.dll
 /Users/kieran/CSharpProjects/Projects/MyMauiApp1/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/MyMauiApp1.sourcelink.json
+/Users/kieran/CSharpProjects/Projects/MyMauiApp1/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resourcestamps/Microsoft.Maui.Controls.HotReload.Forms.stamp
+/Users/kieran/CSharpProjects/Projects/MyMauiApp1/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resourcestamps/Microsoft.VisualStudio.DesignTools.MobileTapContracts.stamp
+/Users/kieran/CSharpProjects/Projects/MyMauiApp1/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resourcestamps/Microsoft.VisualStudio.DesignTools.TapContract.stamp

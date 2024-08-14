@@ -7,6 +7,7 @@ public class MainViewModel
 {
     private string result = "0";
     private double firstValue = 0;
+    private string lastOperator = "";
 
     public delegate void ResultChangedHandler(string result);
     public static event ResultChangedHandler? ResultChanged;
@@ -33,7 +34,12 @@ public class MainViewModel
                         break;
 
                     case "+":
+                        lastOperator = arg;
                         StoreResultAsFirstValue();
+                        break;
+
+                    case "=":
+                        CalculateResult();
                         break;
 
                     default:
@@ -70,23 +76,56 @@ public class MainViewModel
         }
     }
 
-    private void StoreResultAsFirstValue()
+    private void CalculateResult()
     {
+        if (string.IsNullOrEmpty(lastOperator)) return;
+
+        double secondValue = GetResultAsDouble();
+        double calculationValue;
+
+        switch (lastOperator)
+        {
+            case "+":
+                calculationValue = (firstValue + secondValue);
+                firstValue = calculationValue;
+                Result = calculationValue.ToString();
+                break;
+
+            default:
+                break;
+        }
+
+        lastOperator = "";
+    }
+
+    private double GetDoubleFromString(string stringValue)
+    {
+        double doubleToReturn = 0;
+
         try
         {
-            firstValue = Convert.ToDouble(result);
+            doubleToReturn = Convert.ToDouble(result);
         }
         catch (FormatException ex)
         {
             Console.WriteLine("Error - result is of incorrect format to convert to Double");
-            Clear();
         }
         catch (OverflowException ex)
         {
             Console.WriteLine("Error - result is too large to convert to Double (overflow)");
-            Clear();
         }
 
+        return doubleToReturn;
+    }
+
+    private double GetResultAsDouble()
+    {
+        return GetDoubleFromString(Result);
+    }
+
+    private void StoreResultAsFirstValue()
+    {
+        firstValue = GetResultAsDouble();
         Result = "0";
     }
 
