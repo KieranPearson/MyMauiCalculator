@@ -33,7 +33,7 @@ public class MainViewModel
                         if (!Result.Contains(arg)) Result = Result + arg;
                         break;
 
-                    case "+":
+                    case "+": case "-": case "*": case "/":
                         lastOperator = arg;
                         StoreResultAsFirstValue();
                         break;
@@ -81,20 +81,32 @@ public class MainViewModel
         if (string.IsNullOrEmpty(lastOperator)) return;
 
         double secondValue = GetResultAsDouble();
-        double calculationValue;
+        double calculationValue = 0;
 
         switch (lastOperator)
         {
             case "+":
                 calculationValue = (firstValue + secondValue);
-                firstValue = calculationValue;
-                Result = calculationValue.ToString();
+                break;
+            
+            case "-":
+                calculationValue = (firstValue - secondValue);
+                break;
+            
+            case "*":
+                calculationValue = (firstValue * secondValue);
+                break;
+            
+            case "/":
+                if (secondValue != 0) calculationValue = (firstValue / secondValue);
                 break;
 
             default:
                 break;
         }
 
+        firstValue = calculationValue;
+        Result = calculationValue.ToString();
         lastOperator = "";
     }
 
