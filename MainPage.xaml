@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyMauiApp1"
+             x:Class="MyMauiApp1.MainPage"
+             WidthRequest="800"
+             HeightRequest="600"
+             Title="Calculator">
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle1" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#79687c" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="FontSize" Value="25" />
+            </Style>
+
+            <Style x:Key="ButtonStyle2" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#482a72" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="FontSize" Value="25" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="100, *"
+          ColumnDefinitions="*">
+
+        <Label Grid.ColumnSpan="2" x:Name="DisplayLabel" FontSize="50" HorizontalTextAlignment="End" Padding="15" LineBreakMode="HeadTruncation" BackgroundColor="#453E4F">
+            1000000000000
+        </Label>
+
+        <Grid Grid.Row="1" RowDefinitions=".3*, .3*, .3*, .3*, .3*"
+                           ColumnDefinitions=".25*, .25*, .25*, .25*" 
+                           ColumnSpacing="1"
+                           RowSpacing="1">
+
+            <Button Grid.Row="0" 
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding ClearCommand}" 
+                Text="CLEAR"/>
+            
+            <Button Grid.Row="0" 
+                Grid.Column="3" 
+                Style="{StaticResource ButtonStyle2}" 
+                Command="{Binding OperationCommand}"
+                CommandParameter="/"
+                Text="/"/>
+
+            <Button Grid.Row="1"
+                Grid.Column="0" 
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding DigitCommand}"
+                CommandParameter="7"
+                Text="7"/>
+            <Button Grid.Row="1"
+                Grid.Column="1"
+                Style="{StaticResource ButtonStyle1}"
+                Command="{Binding DigitCommand}"
+                CommandParameter="8"
+                Text="8"/>
+            <Button Grid.Row="1"
+                Grid.Column="2" 
+                Style="{StaticResource ButtonStyle1}"
+                Command="{Binding DigitCommand}" 
+                CommandParameter="9"
+                Text="9"/>
+            <Button Grid.Row="1"
+                Grid.Column="3" 
+                Style="{StaticResource ButtonStyle2}"
+                Command="{Binding OperationCommand}" 
+                CommandParameter="*"
+                Text="*"/>
+
+            <Button Grid.Row="2"
+                Grid.Column="0"
+                Style="{StaticResource ButtonStyle1}"
+                Command="{Binding DigitCommand}" 
+                CommandParameter="4"
+                Text="4"/>
+            <Button Grid.Row="2"
+                Grid.Column="1" 
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding DigitCommand}" 
+                CommandParameter="5"
+                Text="5"/>
+            <Button Grid.Row="2" 
+                Grid.Column="2" 
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding DigitCommand}" 
+                CommandParameter="6"
+                Text="6"/>
+            <Button Grid.Row="2" 
+                Grid.Column="3"
+                Style="{StaticResource ButtonStyle2}" 
+                Command="{Binding OperationCommand}" 
+                CommandParameter="-"
+                Text="-"/>
+
+            <Button Grid.Row="3" 
+                Grid.Column="0" 
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding DigitCommand}" 
+                CommandParameter="1"
+                Text="1"/>
+            <Button Grid.Row="3" 
+                Grid.Column="1" 
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding DigitCommand}" 
+                CommandParameter="2"
+                Text="2"/>
+            <Button Grid.Row="3" 
+                Grid.Column="2" 
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding DigitCommand}" 
+                CommandParameter="3"
+                Text="3"/>
+            <Button Grid.Row="3" 
+                Grid.Column="3" 
+                Style="{StaticResource ButtonStyle2}" 
+                Command="{Binding OperationCommand}" 
+                CommandParameter="+"
+                Text="+"/>
+
+            <Button Grid.Row="4" 
+                Grid.Column="0" 
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding DigitCommand}" 
+                CommandParameter="0"
+                Grid.ColumnSpan="2" 
+                Text="0"/>
+            <Button Grid.Row="4" 
+                Grid.Column="2" 
+                Style="{StaticResource ButtonStyle1}" 
+                Command="{Binding OperationCommand}" 
+                CommandParameter="."
+                Text="."/>
+            <Button Grid.Row="4" 
+                Grid.Column="3" 
+                Style="{StaticResource ButtonStyle2}" 
+                Command="{Binding OperationCommand}" 
+                CommandParameter="="
+                Text="="/>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
