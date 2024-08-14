@@ -14,9 +14,9 @@ public partial class MainPage : ContentPage
 		MainViewModel.ResultChanged -= HandleResultChanged;
 	}
 
-    private void HandleResultChanged(double result)
+    private void HandleResultChanged(string result)
     {
-        UpdateDisplayText(result.ToString());
+        UpdateDisplayText(result);
     }
 
     private void UpdateDisplayText(string text)
