@@ -5,6 +5,8 @@ namespace MyMauiApp1;
 
 public class MainViewModel
 {
+    private const int MAX_DECIMALS = 10;
+
     private string result = "0";
     private double firstValue = 0;
     private double secondValue = 0;
@@ -98,19 +100,19 @@ public class MainViewModel
         switch (lastOperator)
         {
             case "+":
-                calculationValue = (firstValue + secondValue);
+                calculationValue = Math.Round((firstValue + secondValue), MAX_DECIMALS);
                 break;
             
             case "-":
-                calculationValue = (firstValue - secondValue);
+                calculationValue = Math.Round((firstValue - secondValue), MAX_DECIMALS);
                 break;
             
             case "*":
-                calculationValue = (firstValue * secondValue);
+                calculationValue = Math.Round((firstValue * secondValue), MAX_DECIMALS);
                 break;
             
             case "/":
-                if (secondValue != 0) calculationValue = (firstValue / secondValue);
+                if (secondValue != 0) calculationValue = Math.Round((firstValue / secondValue), MAX_DECIMALS);
                 break;
 
             default:
