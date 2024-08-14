@@ -1,24 +1,22 @@
-﻿using System.Windows.Input;
-
-namespace MyMauiApp1;
+﻿namespace MyMauiApp1;
 
 public partial class MainPage : ContentPage
 {
 	public MainPage()
 	{
-		MainViewModel.EntryChanged += HandleEntryChanged;
+		MainViewModel.ResultChanged += HandleResultChanged;
 
 		InitializeComponent();
 	}
 
 	~MainPage()
 	{
-		MainViewModel.EntryChanged -= HandleEntryChanged;
+		MainViewModel.ResultChanged -= HandleResultChanged;
 	}
 
-    private void HandleEntryChanged(string entry)
+    private void HandleResultChanged(double result)
     {
-        UpdateDisplayText(entry);
+        UpdateDisplayText(result.ToString());
     }
 
     private void UpdateDisplayText(string text)

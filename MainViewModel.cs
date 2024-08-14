@@ -1,49 +1,45 @@
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace MyMauiApp1;
 
-public class MainViewModel : INotifyPropertyChanged
+public class MainViewModel
 {
-    private string entry = "0";
+    private double result = 0;
 
-	public event PropertyChangedEventHandler PropertyChanged;
-
-    public delegate void EntryChangedHandler(string entry);
-    public static event EntryChangedHandler? EntryChanged;
+    public delegate void ResultChangedHandler(double result);
+    public static event ResultChangedHandler? ResultChanged;
 
     public MainViewModel()
     {
         ClearCommand = new Command(
             execute: () =>
             {
-                Entry = "CLEAR";
+                Result = 0;
             });
 
         OperationCommand = new Command(
             execute: () =>
             {
-                Entry = "OPERATOR";
+                Result = 1;
             });
 
         DigitCommand = new Command(
             execute: () =>
             {
-                Entry = "DIGIT";
+                Result = 2;
             });
     }
 
-    public string Entry
+    public double Result
     {
         private set 
         { 
-            entry = value; 
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Entry"));
-            EntryChanged?.Invoke(entry);
+            result = value; 
+            ResultChanged?.Invoke(result);
         }
         get
         {
-            return entry;
+            return result;
         }
     }
 
