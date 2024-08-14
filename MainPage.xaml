@@ -35,7 +35,7 @@
           ColumnDefinitions="*">
 
         <Label Grid.ColumnSpan="2" x:Name="DisplayLabel" FontSize="50" HorizontalTextAlignment="End" Padding="15" LineBreakMode="HeadTruncation" BackgroundColor="#453E4F">
-            1000000000000
+            0
         </Label>
 
         <Grid Grid.Row="1" RowDefinitions=".3*, .3*, .3*, .3*, .3*"

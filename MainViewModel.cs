@@ -7,7 +7,9 @@ public class MainViewModel
 {
     private string result = "0";
     private double firstValue = 0;
+    private double secondValue = 0;
     private string lastOperator = "";
+    private bool hasSetSecondValue = false;
 
     public delegate void ResultChangedHandler(string result);
     public static event ResultChangedHandler? ResultChanged;
@@ -36,6 +38,7 @@ public class MainViewModel
                     case "+": case "-": case "*": case "/":
                         lastOperator = arg;
                         StoreResultAsFirstValue();
+                        hasSetSecondValue = false;
                         break;
 
                     case "=":
@@ -76,11 +79,20 @@ public class MainViewModel
         }
     }
 
+    private void SetSecondValueToResult()
+    {
+        if (hasSetSecondValue) return;
+
+        secondValue = GetResultAsDouble();
+        hasSetSecondValue = true;
+    }
+
     private void CalculateResult()
     {
         if (string.IsNullOrEmpty(lastOperator)) return;
 
-        double secondValue = GetResultAsDouble();
+        SetSecondValueToResult();
+
         double calculationValue = 0;
 
         switch (lastOperator)
@@ -107,7 +119,6 @@ public class MainViewModel
 
         firstValue = calculationValue;
         Result = calculationValue.ToString();
-        lastOperator = "";
     }
 
     private double GetDoubleFromString(string stringValue)
@@ -145,5 +156,8 @@ public class MainViewModel
     {
         Result = "0";
         firstValue = 0;
+        secondValue = 0;
+        lastOperator = "";
+        hasSetSecondValue = false;
     }
 }
