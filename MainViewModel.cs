@@ -16,16 +16,31 @@ public class MainViewModel
     public delegate void ResultChangedHandler(string result);
     public static event ResultChangedHandler? ResultChanged;
 
+    public ICommand AllClearCommand { private set; get; }
     public ICommand ClearCommand { private set; get; }
     public ICommand OperationCommand { private set; get; }
     public ICommand DigitCommand { private set; get; }
 
     public MainViewModel()
     {
-        ClearCommand = new Command(
+        AllClearCommand = new Command(
             execute: () =>
             {
                 Clear();
+            });
+
+        ClearCommand = new Command(
+            execute: () =>
+            {
+                if (Result.Equals("0")) return;
+
+                if (Result.Length <= 1)
+                {
+                    Result = "0";
+                    return;
+                }
+                
+                Result = Result.Remove(Result.Length - 1);
             });
 
         OperationCommand = new Command<string>(
