@@ -4,16 +4,13 @@ namespace MyMauiApp1;
 
 public partial class App : Application
 {
-	private const int WINDOW_WIDTH_PIXELS = 400;
-	private const int WINDOW_HEIGHT_PIXELS = 500;
-
 	public App()
 	{
 		InitializeComponent();
 
-#if WINDOWS
+	#if WINDOWS
 		MainPage = new AppShell();
-#endif
+	#endif
 	}
 
 #if MACCATALYST
@@ -25,19 +22,19 @@ public partial class App : Application
 		var rootPage = new MainPage();
 		window.Page = rootPage;
 
-		window.MinimumWidth = WINDOW_WIDTH_PIXELS;
-		window.MaximumWidth = WINDOW_WIDTH_PIXELS;
-		window.MinimumHeight = WINDOW_HEIGHT_PIXELS;
-		window.MaximumHeight = WINDOW_HEIGHT_PIXELS;
+		int windowWidthPixels = WindowProperties.GetWindowWidthPixels();
+		int windowHeightPixels = WindowProperties.GetWindowHeightPixels();
 
-		window.Height = WINDOW_WIDTH_PIXELS;
-		window.Width = WINDOW_HEIGHT_PIXELS;
+		window.MinimumWidth = windowWidthPixels;
+		window.MaximumWidth = windowWidthPixels;
+		window.MinimumHeight = windowHeightPixels;
+		window.MaximumHeight = windowHeightPixels;
 
 		Dispatcher.Dispatch(() => {
-			window.MinimumWidth = WINDOW_WIDTH_PIXELS;
-			window.MaximumWidth = WINDOW_WIDTH_PIXELS;
-			window.MinimumHeight = WINDOW_HEIGHT_PIXELS;
-			window.MaximumHeight = WINDOW_HEIGHT_PIXELS;
+			window.MinimumWidth = windowWidthPixels;
+			window.MaximumWidth = windowWidthPixels;
+			window.MinimumHeight = windowHeightPixels;
+			window.MaximumHeight = windowHeightPixels;
 		});
 
         return window;
